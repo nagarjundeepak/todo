@@ -1,0 +1,161 @@
+// global colors
+$primary-white: #ffffff;
+$primary-yellow: #ffa722;
+$bg-blue: #acceff;
+
+// for the devices less than 576px
+$screen-sm-min: 576px;
+@mixin sm {
+  @media (max-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// App
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+}
+
+// header component
+.header {
+  &__vector {
+    width: 55%;
+    height: 100%;
+  }
+  &__text {
+    position: absolute;
+    left: 5%;
+    top: 30px;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 57px;
+    display: flex;
+    align-items: center;
+    color: #626262;
+    @include sm {
+      margin-left: 26%;
+    }
+  }
+}
+
+// column component
+.column {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  @include sm {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  &__users {
+    display: flex;
+    justify-content: space-evenly;
+    @include sm {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  &__addUser {
+    display: flex;
+    height: fit-content;
+    align-items: center;
+    @include sm {
+      margin: 25px 0px;
+      justify-content: center;
+    }
+    .icon {
+      margin-right: 5px;
+      circle {
+        fill: $primary-yellow;
+      }
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+// user column component
+// add new user block
+.user {
+  max-width: 215px;
+  margin-left: 20px;
+  @include sm {
+    flex-direction: column;
+    margin-top: 25px;
+  }
+  &__name {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 2px solid $primary-yellow;
+    margin-bottom: 10px;
+    font-size: 20px;
+    .remove {
+      visibility: hidden;
+      &:hover {
+        font-weight: bold;
+        color: tomato;
+        cursor: pointer;
+      }
+    }
+    &:hover {
+      .remove {
+        visibility: visible;
+      }
+    }
+  }
+  &__newTask {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    .icon {
+      margin-right: 5px;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+// task card block
+.card {
+  background-color: $primary-white;
+  border-radius: 10px;
+  box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px;
+  padding: 10px;
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    line-height: 21px;
+    .remove {
+      font-size: 14px;
+      visibility: hidden;
+      &:hover {
+        font-weight: bold;
+        color: tomato;
+        cursor: pointer;
+      }
+    }
+  }
+  &__content {
+    border-radius: 10px;
+    background-color: $bg-blue;
+    padding: 10px;
+    color: #292929;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 10px;
+  }
+  &:hover {
+    .remove {
+      visibility: visible;
+    }
+  }
+}
